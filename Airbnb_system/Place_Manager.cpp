@@ -113,7 +113,7 @@ void Place_Manager::add_filter(vector <Place*>& v)
 		cout << "\n2--> Filter with date range";
 		cout << "\n3--> Filter with duration";
 		cout << "\n4--> Display filter places";
-		cout << "\n4--> Back\nyour choice:";
+		cout << "\n5--> Back\nyour choice:";
 		cin >> ch;
 		switch (ch)
 		{
@@ -270,9 +270,9 @@ void Place_Manager::display_places()
 			}
 		}
 	}
-}
 
-void Place_Manager::remove_filter()
+}
+void Place_Manager::remove_filter(vector <Place*> c)
 {
 	int ch = 0, b = 0;
 	do
@@ -292,6 +292,7 @@ void Place_Manager::remove_filter()
 				duration_stack.pop();
 		}
 	} while (ch != b);
+	func(c);
 }
 
 void Place_Manager::display(vector <Place*>& inside)
@@ -328,7 +329,7 @@ void Place_Manager::select_search()
 			vector <Place*> ptr_to_avaliable_places = place_list_.find(city)->second;
 			cout << "1-->Add filter\n";
 			cout << "2-->remove selected filter\n";
-			cout << "3-->display all places in"<< city<<"\n";
+			cout << "3-->display all places in "<< city<<"\n";
 			cout << "4-->back\n your choice:";
 			cin >> ch;
 
@@ -338,7 +339,7 @@ void Place_Manager::select_search()
 				add_filter(ptr_to_avaliable_places);
 				break;
 			case 2:
-				remove_filter();
+				remove_filter(ptr_to_avaliable_places);
 				break;
 			case 3:
 				display(ptr_to_avaliable_places);
